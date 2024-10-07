@@ -17,7 +17,7 @@ destroy.addEventListener("click", () => {
 });
 
 function createMarkup() {
-  if (input.value > 1 || input.value < 100) {
+  if (input.value >= 1 || input.value <= 100) {
     createBoxes(input.value);
   }
 
@@ -26,6 +26,7 @@ function createMarkup() {
 
 function createBoxes(amount) {
   clear();
+  const elements = [];
 
   for (let i = 0; i < amount; i++) {
     const box = document.createElement("div");
@@ -33,10 +34,11 @@ function createBoxes(amount) {
     box.style.width = `${sizes}px`;
     box.style.height = `${sizes}px`;
 
-    boxes.append(box);
+    elements.push(box);
 
     sizes += 10;
   }
+  boxes.append(...elements);
 }
 
 function clear() {
